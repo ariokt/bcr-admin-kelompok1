@@ -1,0 +1,9 @@
+.dashboard {
+    padding-top: 70px;
+    padding-left: 300px;
+    background-color: #F4F5F7;
+}
+
+.dashboard__bread a {
+    text-decoration: none;
+}
