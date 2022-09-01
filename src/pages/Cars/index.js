@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
@@ -14,6 +14,22 @@ const Cars = () => {
     const value = {name: "CARS", menus: ["List Car"]};
     const breadCrumb = ["Cars", "List Car"];
     const carsOption = ["All", "2 - 4 people", "4 - 6 people", "6 - 8 people"];
+    const [clickedValue, setClickedValue] = useState("");
+
+    const handleOption = (e) => {
+        e.preventDefault();
+        let bValue = e.target.innerHTML;
+
+        if (bValue === "All") {
+            setClickedValue("All");
+        } else if (bValue === "2 - 4 people") {
+            setClickedValue("2 - 4 orang");
+        } else if (bValue === "4 - 6 people") {
+            setClickedValue("4 - 6 orang");
+        } else if (bValue === "6 - 8 people") {
+            setClickedValue("6 - 8 orang");
+        }
+    }
     
     return (
         <div>
@@ -30,9 +46,9 @@ const Cars = () => {
                     </button>
                 </div>
                 <div className="cars__option">
-                    {carsOption.map((item, y) => <Button key={y} variant="outline-primary">{item}</Button>)}                  
+                    {carsOption.map((item, y) => <Button key={y} variant="outline-primary" onClick={handleOption}>{item}</Button>)}                  
                 </div>
-                <CarsContainer />
+                <CarsContainer option={clickedValue} />
             </div>
         </div>
     )

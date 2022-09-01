@@ -26,9 +26,9 @@ const Navbar = () => {
             <img src={logo} />
             <div>
                 {menuOptions.map((option, y) => 
-                <NavLink to={option.link} 
+                <NavLink key={y} to={option.link} 
                   className={({ isActive }) => "menu d-flex flex-column align-items-center" + ( isActive ? " link-active" : "")}>
-                  <Menu key={y} option={option} />
+                  <Menu option={option} />
                 </NavLink>)}
             </div>
         </div>

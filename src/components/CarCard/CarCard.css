@@ -7,15 +7,26 @@
     width: 303px;
 }
 
-.car-card__detail img {
+.car-card__detail > img {
     display: block;
     margin: 0 auto 3rem auto;
     width: 270px;
     height: 160px;
 }
 
-.car-card__detail p {
-    margin-bottom: 0.5rem;
+.car-card__harga {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.car-card__kategori, .car-card__update {
+    width: fit-content;
+    height: fit-content;
+}
+
+.car-card__kategori img, .car-card__update img {
+    width: 20px;
+    height: 20px;
 }
 
 .car-card__button {

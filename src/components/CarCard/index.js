@@ -2,10 +2,40 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import iconUser from "../../assets/fi_users.svg"
+import iconTime from "../../assets/fi_clock.svg"
 import "./CarCard.css"
 
 
 const CarCard = ({ data }) => {
+
+    const handleMonth = (value) => {
+        if (value === "01") {
+            return "Jan"
+        } else if (value === "02") {
+            return "Feb"
+        } else if (value === "03") {
+            return "Mar"
+        } else if (value === "04") {
+            return "Apr"
+        } else if (value === "05") {
+            return "Mei"
+        } else if (value === "06") {
+            return "Jun"
+        } else if (value === "07") {
+            return "Jul"
+        } else if (value === "08") {
+            return "Aug"
+        } else if (value === "09") {
+            return "Sep"
+        } else if (value === "10") {
+            return "Oct"
+        } else if (value === "11") {
+            return "Nov"
+        } else if (value === "12") {
+            return "Des"
+        }
+    }
 
     return (
         <div className="car-card p-4 bg-white">
@@ -13,9 +43,15 @@ const CarCard = ({ data }) => {
                 <img src={data.image} />
                 <p>{data.name}</p>
                 <div className="d-flex flex-column gap-2 mb-3">
-                    <p>{data.price}</p>
-                    <p>{data.category}</p>
-                    <p>{data.updatedAt}</p>
+                    <p className="car-card__harga">Rp {Intl.NumberFormat('ID').format(data.price)} / hari</p>
+                    <div className="car-card__kategori d-flex gap-1">
+                        <img src={iconUser} />
+                        <p>{data.category}</p>
+                    </div>
+                    <div className="car-card__update d-flex gap-1">
+                        <img src={iconTime} />
+                        <p>Updated at {data.updatedAt.substring(8,10)} {handleMonth(data.updatedAt.substring(5,7))} {data.updatedAt.substring(0,4)}, {data.updatedAt.substring(11,16)}</p>
+                    </div>
                 </div>
                 <div className="d-flex gap-2">
                     <Button className="car-card__button d-flex gap-2 align-items-center justify-content-center" variant="outline-danger">
