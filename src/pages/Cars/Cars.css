@@ -1,0 +1,38 @@
+.cars {
+    padding-top: 70px;
+    padding-left: 300px;
+    background-color: #F4F5F7;
+    width: 100%;
+}
+
+.cars a {
+    text-decoration: none;
+}
+
+.cars__top {
+    padding: 0 1.5rem 0 1.5rem; 
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.cars__add {
+    background: #0D28A6;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 2px;
+    border: none;
+}
+
+.cars__add p {
+    margin-bottom: 0;
+}
+
+.cars__option {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cars__option button {
+    margin-right: 1rem;
+}

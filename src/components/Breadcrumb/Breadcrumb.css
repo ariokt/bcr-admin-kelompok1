@@ -1,0 +1,5 @@
+.breadcrumb {
+    --bs-breadcrumb-divider: '>';
+    width: fit-content;
+    margin: 3.125rem 0 2.625rem 1.5rem !important;
+}

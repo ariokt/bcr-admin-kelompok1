@@ -1,0 +1,6 @@
+.search {
+    background: url(../../assets/search.svg) no-repeat 4px;
+    padding: 6px 0 6px 30px;
+    border-radius: 2px;
+    border: 1px solid #D0D0D0
+}

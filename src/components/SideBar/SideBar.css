@@ -1,0 +1,21 @@
+.side-bar {
+    margin: 70px 0 0 5rem;
+    padding-top: 3.2rem;
+    width: 220px;
+    height: 100%;
+    background-color: white;
+    gap: 20px;
+}
+
+.side-bar__title {
+    font-size: 14px;
+    color: #8A8A8A;
+    padding-left: 1.5rem;
+}
+
+.side-bar__menus {
+    padding: 0.7rem 0 0.7rem 1.5rem;
+    font-weight: 700;
+    font-size: 14px;
+    background-color: #CFD4ED;
+}
