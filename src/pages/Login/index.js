@@ -14,6 +14,7 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
+    const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const handleSigIn = (e) => {
         e.preventDefault();
@@ -23,11 +24,11 @@ const Login = () => {
         };
         axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
             .then(res => (
-                setRespon(res.data.access_token),
                 localStorage.setItem('token', res.data.access_token),
                 navigate('/')
             ))
-            .catch(err => setErr(err))
+            .catch(err => (setErr(err),
+            setShow(true)))
     };
 
     return (
@@ -36,28 +37,29 @@ const Login = () => {
                 <img src={bgLogin} alt="" />
             </div>
             <div className='loginKanan'>
-                <Form style={{margin: '50px'}}>
-                    <img src={ipsum} style={{marginBottom: '25px'}} />
+                <Form className='loginkanan__form'>
+                    <img src={ipsum}/>
                     <h2>Welcome, Admin BCR</h2>
+                    {
+                        show && (
+                            <Alert variant="danger" onClose={() => setShow(false)} dismissible>
+                                <p>
+                                Masukkan username dan password yang benar. Perhatikan penggunaan huruf kapital.
+                                </p>
+                            </Alert>
+                        )
+                    }
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email</Form.Label>
                         <Form.Control onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Contoh: johndee@gmail.com" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Group className="mb-4" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="6+ karakter" />
                     </Form.Group>
-                    <Button onClick={handleSigIn} style={{width: '100%'}} variant="primary" type="submit">
+                    <Button onClick={handleSigIn} variant="primary" type="submit">
                         Sign In
                     </Button>
-                    {
-                        !!err && (
-                            <Alert style={{marginTop: '25px'}} variant="danger">Masukkan username dan password yang benar. Perhatikan penggunaan huruf kapital.</Alert>
-                        )
-                    }
                 </Form>
             </div>
         </div>
