@@ -8,16 +8,28 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
-const Login = ({setIsLogin}) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [respon, setRespon] = useState('');
 
     const navigate = useNavigate();
 
     const handleSigIn = (e) => {
         e.preventDefault();
-        console.log(email, password)
+
+        const payload = {
+            email: email,
+            password:  password,
+        };
+
+        axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
+            .then(res => (
+                console.log(res.data.access_token)
+            ))
+            .catch(err => console.log(err))
     };
+
 
     return (
         <div className='login'>
