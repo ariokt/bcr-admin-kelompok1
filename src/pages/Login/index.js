@@ -25,7 +25,9 @@ const Login = () => {
 
         axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
             .then(res => (
-                console.log(res.data.access_token)
+                console.log(res),
+                localStorage.setItem('token', res.data.access_token),
+                navigate('/')
             ))
             .catch(err => console.log(err))
     };
