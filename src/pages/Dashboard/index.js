@@ -7,7 +7,7 @@ import "./Dashboard.css"
 
 const Dashboard = () => {
     const value = {name: "DASHBOARD", menus: ["Dashboard"]};
-    const breadCrumb = ["Dasboard", "Dashboard"];
+    const breadCrumb = [{name: "Dasboard", link: ""}, {name: "Dasboard"}];
     return (
         <div>
             <Navbar />

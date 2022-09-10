@@ -1,6 +1,8 @@
-import Dashboard from "./pages/Dashboard";
-import Cars from "./pages/Cars";
+import AddNewCar from "./pages/AddNewCar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cars from "./pages/Cars";
+import Dashboard from "./pages/Dashboard";
+import EditCar from "./pages/EditCar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -10,6 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/Cars" element={<Cars />} />
+        <Route path="/Cars/Add-New-Car" element={<AddNewCar />} />
+        <Route path="/Cars/Edit-Car-:id" element={<EditCar />} />
       </Routes>
     </BrowserRouter>
   );

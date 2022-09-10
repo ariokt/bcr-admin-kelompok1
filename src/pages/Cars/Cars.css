@@ -5,6 +5,32 @@
     width: 100%;
 }
 
+.cars__notif--delete {
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 300px;
+    color: white;
+    width: 550px;
+    padding: 12px 16px;
+    background: black;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.cars__notif--add {
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: 300px;
+    color: white;
+    width: 550px;
+    padding: 12px 16px;
+    background: #73CA5C;
+    text-align: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
 .cars a {
     text-decoration: none;
 }
