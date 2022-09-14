@@ -8,9 +8,10 @@ import Form from 'react-bootstrap/Form';
 import ipsum from '../../assets/logoipsum.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 import './login.css';
 
-const Login = () => {
+const Login = ({setIsLogin}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
@@ -25,11 +26,23 @@ const Login = () => {
         axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
             .then(res => (
                 localStorage.setItem('token', res.data.access_token),
-                navigate('/')
+                setIsLogin(true),
+                navigate('/dashboard')
             ))
-            .catch(err => (setErr(err),
-            setShow(true)))
+            .catch(err => (
+                setErr(err),
+                setShow(true)))
     };
+    console.log(err)
+
+    useEffect(() => {
+        const checkIfLogin = () => {
+            const token = localStorage.getItem('token');
+            if (!token) return;
+            navigate('/dashboard')
+        };
+        checkIfLogin();
+    });
 
     return (
         <div className='login'>
