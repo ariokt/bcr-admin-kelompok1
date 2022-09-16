@@ -4,6 +4,86 @@
     background-color: #F4F5F7;
 }
 
+.dashboard h2 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 30px;
+    margin-top: 70px;
+    
+}
+
+.dashboard form select {
+    width: 122px;
+    height: 36px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.dashboard form button {
+    height: 36px;
+    font-family: 'Rubik';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    background: #0D28A6;
+    border-radius: 0px 2px 2px 0px;
+}
+
 .dashboard__bread a {
     text-decoration: none;
+}
+
+.monthsearch {
+    padding-left: 30px;
+    margin-top: 30px;
+
+}
+
+.monthsearch p {
+    width: 28px;
+    height: 18px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.monthsearch option {
+    width: 28px;
+    height: 18px;
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.table {
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+.table p {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+}
+
+.table h3 {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
 }

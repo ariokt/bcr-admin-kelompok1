@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import './login.css';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
 const Login = ({setIsLogin}) => {
     const [email, setEmail] = useState('');

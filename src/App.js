@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import { useEffect } from "react";
 import { useState } from "react";
 import ProtectedRoute from "./HOC/ProtectedRoute";
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 function App() {
   const [isLogin, setIsLogin] = useState(null);
