@@ -8,27 +8,32 @@ import { useState } from "react";
 import ProtectedRoute from "./HOC/ProtectedRoute";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(null);
+  // const [isLogin, setIsLogin] = useState(null);
 
-  useEffect(() => {
-      const checkIfLogin = () => {
-          const token = localStorage.getItem("token");
-          if (!token) {
-              setIsLogin(false);
-          } else {
-              setIsLogin(true);
-          }};
-          checkIfLogin();
-      }, []);
+  // const [token, setToken] = useState('');
+  // const token = localStorage.getItem("token");
+
+  // useEffect(() => {
+  //   if(token) {
+  //     setIsLogin(true);
+  //   } else {
+  //     setIsLogin(false);
+  //   }
+  // }, []);
+
+  // isLogin={isLogin}
+  // setIsLogin={setIsLogin}
+  // setToken={setToken}
+  // token={token}
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login setIsLogin={setIsLogin} />} />
-        <Route path="/dashboard" element={<ProtectedRoute isLogin={isLogin}>
+        <Route path="/" element={<Login  />} />
+        <Route path="/dashboard" element={<ProtectedRoute >
           <Dashboard />
         </ProtectedRoute>} />
-        <Route path="/cars" element={<ProtectedRoute isLogin={isLogin}>
+        <Route path="/cars" element={<ProtectedRoute >
           <Cars />
         </ProtectedRoute>} />
       </Routes>

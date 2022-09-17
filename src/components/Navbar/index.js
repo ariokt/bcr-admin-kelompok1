@@ -12,7 +12,7 @@ const Navbar = () => {
         {
             img: dashboard,
             text: "Dashboard",
-            link: "/"
+            link: "/dashboard"
         },
         {
             img: cars,

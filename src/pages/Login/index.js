@@ -11,7 +11,9 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './login.css';
 
-const Login = ({setIsLogin}) => {
+// {setIsLogin}
+// {setToken}
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [err, setErr] = useState('');
@@ -26,7 +28,8 @@ const Login = ({setIsLogin}) => {
         axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
             .then(res => (
                 localStorage.setItem('token', res.data.access_token),
-                setIsLogin(true),
+                // setIsLogin(true),
+                // setToken(res.data.access_token),
                 navigate('/dashboard')
             ))
             .catch(err => (
@@ -34,15 +37,6 @@ const Login = ({setIsLogin}) => {
                 setShow(true)))
     };
     console.log(err)
-
-    useEffect(() => {
-        const checkIfLogin = () => {
-            const token = localStorage.getItem('token');
-            if (!token) return;
-            navigate('/dashboard')
-        };
-        checkIfLogin();
-    });
 
     return (
         <div className='login'>
