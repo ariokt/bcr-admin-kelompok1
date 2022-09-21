@@ -1,5 +1,6 @@
 import React from "react";
 import Breadcrumb from "../../components/Breadcrumb";
+import DataVisual from "../../components/DataVisual";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/SideBar";
@@ -15,6 +16,7 @@ const Dashboard = () => {
             <SideBar inside={value} />
             <div className="dashboard">
                 <Breadcrumb items={breadCrumb} />
+                <DataVisual />
             </div>
         </div>
     )
