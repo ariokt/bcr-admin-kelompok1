@@ -2,3 +2,27 @@
     width: fit-content;
     margin: 3.125rem 0 2.625rem 1.5rem !important;
 }
+
+.dropdown-filter {
+    width: 150px;
+    height: 36px;
+}
+
+.filter-month{
+    display: flex;
+}
+
+.btn-filter-go{
+    background: #0D28A6;
+    border-radius: 0px 2px 2px 0px;
+    width: 43px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-filter-go p{
+    color: white;
+}
+
+

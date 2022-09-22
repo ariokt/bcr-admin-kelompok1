@@ -9,6 +9,7 @@ import "./Dashboard.css"
 const Dashboard = () => {
     const value = {name: "DASHBOARD", menus: ["Dashboard"]};
     const breadCrumb = ["Dasboard", "Dashboard"];
+    console.log("BBBBBB")
     return (
         <div>
             <Navbar />
