@@ -6,6 +6,9 @@ import './index.css'
 const DataVisual = () => {
     const [carData, setCarData] = useState([]);
     const [filterData, setFilterData] = useState([]);
+    const [filterOption, setFilterOption] = useState([]);
+    const [parameterNow, setParameterNow] = useState("");
+
     const getData = () => {
         axios
             .get("https://bootcamp-rent-car.herokuapp.com/admin/order")
@@ -15,7 +18,8 @@ const DataVisual = () => {
     }
     
     useEffect(() => {
-        getData()
+        getData();
+        getMonth();
     }, [])
 
     const dataFilter = (bulan, tahun) => {
@@ -33,7 +37,6 @@ const DataVisual = () => {
             
             // cek bulan
             for(let p = 0; p < carData.length; p++){
-                console.log(carData[p])
                 if (tahun > parseInt((carData[p].start_rent_at).substring(0,5)) && tahun < parseInt((carData[p].finish_rent_at).substring(0,5))) {
                     ofTanggal["summary"] = ofTanggal.summary + 1;
                 } else if (parseInt((carData[p].start_rent_at).substring(0,5)) === tahun) {
@@ -74,37 +77,25 @@ const DataVisual = () => {
                     }
 
                 }
-            }
-                // if(parseInt((carData[p].start_rent_at).substring(0,5)) == tahun && parseInt((carData[p].finish_rent_at).substring(0,5)) == tahun){
-                //     if(parseInt((carData[p].start_rent_at).substring(5,7)) <= bulan <= parseInt((carData[p].finish_rent_at).substring(5,7))){
-                //         console.log(p, " INI BULAN START",parseInt((carData[p].start_rent_at).substring(5,7)))
-                //         console.log(p, "INI BULAN MINTA", bulan)
-                //         if(parseInt((carData[p].start_rent_at).substring(5,7)) == bulan){
-                //             if(parseInt((carData[p].start_rent_at).substring(8,10)) <= i){
-                //                 console.log("TANGGAL", i, "DETAIL", carData[p].start_rent_at)
-                //                 ofTanggal['summary'] = ofTanggal.summary + 1;
-                //             }
-                //         } else if(parseInt((carData[p].finish_rent_at).substring(5,7)) == bulan){
-                //             if(parseInt((carData[p].finish_rent_at).substring(8,10)) >= i){
-                //                 ofTanggal["summary"] = ofTanggal.summary + 1;
-                //             }
-                //         } else{
-                //             ofTanggal["summary"] = ofTanggal.summary + 1;
-                //         }
-                //     }
-                
-            
+            }   
             shorDataFilter.push(ofTanggal)
         }
-        //error in here
-        
-        filterData.push(shorDataFilter)
-        
+        setFilterData(shorDataFilter);   
     }
 
-    if(carData.length != 0) {
-        dataFilter(9, 2022);
+    const getMonth = () => {
+        let month = ["Januari", "February", "March", "April", "May", "June", "July","August", "September","October","November", "December"];
 
+        let myOption = [];
+
+        for(let p = 0; p < month.length; p++){
+            myOption.push(`${month[p]} - ${(new Date()).getFullYear()}`);
+        }
+        
+        setFilterOption(myOption);
+    }
+
+    if(carData.length !== 0) {
         return (
             <div className='data-visual'>
                 <div className='head-data-visual'>
@@ -112,11 +103,17 @@ const DataVisual = () => {
                     <p>Rented Car Data Visualization</p>
                 </div>
                 <div className='data-mouth'>
-                    <p>Mounth</p>
-
+                    <p>Month</p>
+                </div>
+                <div className='d-flex'>
+                    <select className="form-select" aria-label="Default select example"  onChange={(e) => setParameterNow(e.target.value)}>
+                        <option>Pilih Option</option>
+                        {filterOption.map((option, y) => <option key={y} value={`${y+1} - ${(new Date()).getFullYear()}`}>{option}</option>)}
+                    </select>
+                    <button onClick={()=>  dataFilter(parseInt(parameterNow.slice(0,2)), parseInt(parameterNow.slice(4,9)))} className='btn-filter-go'><p>Go</p></button>
                 </div>
                 <div>
-                    <BarChart data= {filterData[1]}/>
+                    <BarChart data= {filterData}/>
                 </div>
             </div>
         );

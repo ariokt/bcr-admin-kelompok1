@@ -1,38 +1,27 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 
 
 const BarCharts = (props) => {
   const {data} = props;
-  const data2 = [
-    {
-      name: 'Page A',
-      uv: 4000,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-
-    },]
   return (
     <div>
       <BarChart
-        width={1500}
+        width={1150 }
         height={500}
         data={data}
         margin={{
           top: 20,
           right: 30,
           left: 20,
-          bottom: 5
+          bottom: 20
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis yAxisId="left" orientation="left" stroke="#8884d8" />
+        <XAxis dataKey="name" label={{ value: 'Date', position: 'insideBottom', offset: "-20"}}/>
+        <YAxis yAxisId="left" orientation="left" stroke="#8884d8" label={{ value: 'Amount of Car Rented', angle: -90, position: 'insideLeft'}}/>
         <Tooltip />
-        <Legend />
         <Bar yAxisId="left" dataKey="summary" fill="#8884d8" />
       </BarChart>
     </div>
