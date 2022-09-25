@@ -4,6 +4,7 @@ import Cars from "./pages/Cars";
 import Dashboard from "./pages/Dashboard";
 import EditCar from "./pages/EditCar";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'rsuite/dist/rsuite.min.css';
 
 
 function App() {
