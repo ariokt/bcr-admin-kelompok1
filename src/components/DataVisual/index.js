@@ -95,6 +95,9 @@ const DataVisual = () => {
         setFilterOption(myOption);
     }
 
+    // console.log('filter', filterData)
+    // console.log('data', carData)
+
     if(carData.length !== 0) {
         return (
             <div className='data-visual'>
@@ -110,7 +113,8 @@ const DataVisual = () => {
                         <option>Pilih Option</option>
                         {filterOption.map((option, y) => <option key={y} value={`${y+1} - ${(new Date()).getFullYear()}`}>{option}</option>)}
                     </select>
-                    <button onClick={()=>  dataFilter(parseInt(parameterNow.slice(0,2)), parseInt(parameterNow.slice(4,9)))} className='btn-filter-go'><p>Go</p></button>
+                    <button onClick={()=>  (dataFilter(parseInt(parameterNow.slice(0,2)), parseInt(parameterNow.slice(4,9))),
+                        console.log(parameterNow.slice(0,2), parameterNow.slice(4,9)))} className='btn-filter-go'><p>Go</p></button>
                 </div>
                 <div>
                     <BarChart data= {filterData}/>
