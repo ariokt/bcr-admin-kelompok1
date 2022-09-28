@@ -83,6 +83,7 @@ const TableDashboard = () => {
     return (
         <div>
             <Table height={420}
+                width= {900}
                 data={getData()}
                 sortColumn={sortColumn}
                 sortType={sortType}
@@ -128,7 +129,7 @@ const TableDashboard = () => {
                 maxButtons={5}
                 size="xs"
                 layout={['total', '-', 'limit', '|', 'pager', 'skip']}
-                total={carData.length}
+                total={fixedData.length}
                 limitOptions={[10, 30, 50]}
                 limit={limit}
                 activePage={page}
