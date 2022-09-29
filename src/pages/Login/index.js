@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
 import bgLogin from '../../assets/login.svg';
@@ -62,7 +61,7 @@ const Login = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control onChange={(e) => setPassword(e.target.value)} type="password" placeholder="6+ karakter" />
                     </Form.Group>
-                    <Button onClick={handleSigIn} variant="primary" type="submit">
+                    <Button onClick={handleSigIn} className="loginkanan__form-button" variant="primary" type="submit">
                         Sign In
                     </Button>
                 </Form>

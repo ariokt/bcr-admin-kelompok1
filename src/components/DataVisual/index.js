@@ -9,10 +9,16 @@ const DataVisual = ({ carData }) => {
     const [filterData, setFilterData] = useState([]);
     const [filterOption, setFilterOption] = useState([]);
     const [parameterNow, setParameterNow] = useState("");
-    
+
     useEffect(() => {
         getMonth();
-    }, [])
+        if (parameterNow === "") {
+            setParameterNow(`${(new Date()).getMonth()+1} - ${(new Date()).getFullYear()}`);
+        }
+        dataFilter(parseInt(parameterNow.slice(0,2)), parseInt(parameterNow.slice(4,9)));
+    }, [carData])
+
+   
 
     const dataFilter = (bulan, tahun) => {
         let generalDmouth = new Date(tahun, bulan, 1)
