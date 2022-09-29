@@ -21,8 +21,6 @@ const AddNewCar = () => {
     const [kategori, setKategori] = useState("");
     const [status, setStatus] = useState("");
     const [image, setImage] = useState({});
-
-    console.log(image);
     
     const handleSave = (e) => {
         e.preventDefault();

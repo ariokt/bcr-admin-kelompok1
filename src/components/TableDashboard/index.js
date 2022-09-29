@@ -81,7 +81,7 @@ const TableDashboard = () => {
     });
 
     return (
-        <div>
+        <div style={{marginBottom: '100px'}}>
             <Table height={420}
                 width= {900}
                 data={getData()}
