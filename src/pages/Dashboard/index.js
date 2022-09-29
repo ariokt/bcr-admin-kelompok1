@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Breadcrumb from "../../components/Breadcrumb";
-import DataVisual from "../../components/DataVisual";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import SideBar from "../../components/SideBar";
+import TableDashboard from "../../components/TableDashboard";
 import "./Dashboard.css"
-import OrderTable from "../../components/OrderTable";
+import dashboard1 from '../../assets/dashboard1.svg'
+import DataVisual from "../../components/DataVisual"
 
 const Dashboard = () => {
     const value = {name: "DASHBOARD", menus: ["Dashboard"]};
@@ -33,7 +34,11 @@ const Dashboard = () => {
             <div className="dashboard">
                 <Breadcrumb items={breadCrumb} />
                 <DataVisual carData={carData}/>
-                <OrderTable />
+                <div className="dashboard__table">
+                    <h2>Dashboard</h2>
+                    <p> <img src={dashboard1} alt="" /> List Order</p>
+                    <TableDashboard />
+                </div>
             </div>
         </div>
     )

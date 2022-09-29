@@ -25,3 +25,14 @@
     margin-bottom: 0;
 }
 
+.head-data-visual {
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #000000;
+    margin-bottom: 18px;
+}
+
+

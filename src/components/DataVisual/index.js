@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import BarChart from '../BarChart/index';
 import './index.css'
+import dashboard1 from '../../assets/dashboard1.svg'
+
 
 const DataVisual = ({ carData }) => {
     
@@ -88,13 +90,8 @@ const DataVisual = ({ carData }) => {
     if(carData.length !== 0) {
         return (
             <div className='data-visual'>
-                <div className='head-data-visual'>
-                    <span></span>
-                    <p>Rented Car Data Visualization</p>
-                </div>
-                <div className='data-mouth'>
-                    <p>Month</p>
-                </div>
+                <p className='head-data-visual'><span> <img src={dashboard1} alt="" /> </span>Rented Car Data Visualization</p>
+                <p className='data-mouth'>Month</p>
                 <div className='d-flex'>
                     <select className="data-visual__select" aria-label="Default select example"  onChange={(e) => setParameterNow(e.target.value)}>
                         <option>Pilih Option</option>

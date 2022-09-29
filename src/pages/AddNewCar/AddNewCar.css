@@ -37,6 +37,7 @@
 
 .add-car__button {
     bottom: 40px;
-    position: absolute;
+    margin-top: 200px;
+    margin-bottom: 40px;
     margin-left: 1.5rem;
 }
