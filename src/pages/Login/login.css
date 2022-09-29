@@ -1,0 +1,36 @@
+.login {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loginKiri {
+    width: 65%;
+    background-color: #002966;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.loginKiri img {
+    width: 100%;
+}
+
+.loginKanan {
+    width: 35%;
+    display: flex;
+    width: 35%;
+    justify-content: center;
+    align-self: center;
+}
+
+.loginkanan__form {
+    margin: 50px;
+}
+
+.loginkanan__form img {
+    margin-bottom: 25px;
+}
+
+.loginkanan__form button {
+    width: 100%;
+}
+

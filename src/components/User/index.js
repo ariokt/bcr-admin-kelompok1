@@ -17,7 +17,14 @@ const User = () => {
           }
           id="basic-nav-dropdown">
             <NavDropdown.Item>Profile</NavDropdown.Item>
-            <NavDropdown.Item style={{color:"red"}}>Logout</NavDropdown.Item>
+            <NavDropdown.Item 
+              style={{color:"red"}}
+              onClick={() => {
+                localStorage.clear('token');
+                window.location.reload();
+              }}>
+              Logout
+            </NavDropdown.Item>
         </NavDropdown>
     )
 }
