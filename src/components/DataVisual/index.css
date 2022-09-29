@@ -3,7 +3,7 @@
     margin: 3.125rem 0 2.625rem 1.5rem !important;
 }
 
-.form-select {
+.data-visual__select {
     width: fit-content !important;
     height: 36px;
     border: 1px solid #D0D0D0 !important;

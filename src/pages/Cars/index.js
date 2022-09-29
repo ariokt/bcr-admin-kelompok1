@@ -45,7 +45,7 @@ const Cars = () => {
             setNotifHapus(true);
             setTimeout(() => {
                 setNotifHapus(false);
-            }, 7000)
+            }, 3000)
         }
     }, [idHapus])
 
@@ -54,7 +54,8 @@ const Cars = () => {
             setNotifAdd(true);
             setTimeout(() => {
                 setNotifAdd(false);
-            }, 7000)
+                navigate(".", { replace: true }); //edit state jadi null kembali setelah popup
+            }, 3000)
         }
     }, [location])
     

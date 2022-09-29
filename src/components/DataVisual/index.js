@@ -1,24 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import BarChart from '../BarChart/index';
 import './index.css'
 
-const DataVisual = () => {
-    const [carData, setCarData] = useState([]);
+const DataVisual = ({ carData }) => {
+    
     const [filterData, setFilterData] = useState([]);
     const [filterOption, setFilterOption] = useState([]);
     const [parameterNow, setParameterNow] = useState("");
-
-    const getData = () => {
-        axios
-            .get("https://bootcamp-rent-car.herokuapp.com/admin/order")
-            .then((respones) => {
-                setCarData(respones.data)
-            })
-    }
     
     useEffect(() => {
-        getData();
         getMonth();
     }, [])
 
@@ -106,7 +96,7 @@ const DataVisual = () => {
                     <p>Month</p>
                 </div>
                 <div className='d-flex'>
-                    <select className="form-select" aria-label="Default select example"  onChange={(e) => setParameterNow(e.target.value)}>
+                    <select className="data-visual__select" aria-label="Default select example"  onChange={(e) => setParameterNow(e.target.value)}>
                         <option>Pilih Option</option>
                         {filterOption.map((option, y) => <option key={y} value={`${y+1} - ${(new Date()).getFullYear()}`}>{option}</option>)}
                     </select>
