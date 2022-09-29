@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Alert from 'react-bootstrap/Alert';
 import axios from 'axios';
@@ -8,17 +8,19 @@ import Form from 'react-bootstrap/Form';
 import ipsum from '../../assets/logoipsum.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import './login.css';
 
-// {setIsLogin}
-// {setToken}
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [err, setErr] = useState('');
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const token = window.localStorage.getItem("token");
+
+    useEffect(() => {
+        if (token) navigate("/dashboard");
+    }, []);
+    
     const handleSigIn = (e) => {
         e.preventDefault();
         const payload = {
@@ -26,17 +28,13 @@ const Login = () => {
             password:  password,
         };
         axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
-            .then(res => (
-                localStorage.setItem('token', res.data.access_token),
-                // setIsLogin(true),
-                // setToken(res.data.access_token),
-                navigate('/dashboard')
-            ))
+            .then(res => {
+                localStorage.setItem('token', res.data.access_token);
+                navigate('/dashboard');
+            })
             .catch(err => (
-                setErr(err),
-                setShow(true)))
+                setShow(true)));
     };
-    console.log(err)
 
     return (
         <div className='login'>
@@ -45,7 +43,7 @@ const Login = () => {
             </div>
             <div className='loginKanan'>
                 <Form className='loginkanan__form'>
-                    <img src={ipsum}/>
+                    <img alt='' src={ipsum}/>
                     <h2>Welcome, Admin BCR</h2>
                     {
                         show && (

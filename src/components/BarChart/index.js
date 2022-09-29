@@ -5,8 +5,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const BarCharts = (props) => {
   const {data} = props;
-  const looping = data.map((item) => item.name);
-  console.log('looping', looping)
+  
   return (
     <div>
       <BarChart

@@ -33,7 +33,7 @@ const TableDashboard = () => {
     }, [carData]);
 
     const [sortColumn, setSortColumn] = React.useState(); //shorting data
-    const [sortType, setSortType] = React.useState(''); 
+    const [sortType, setSortType] = React.useState('asc'); 
     const [loading, setLoading] = React.useState(false);
 
     const getData = () => {
@@ -83,42 +83,42 @@ const TableDashboard = () => {
     return (
         <div style={{marginBottom: '100px'}}>
             <Table height={420}
-                width= {900}
+                style={{width:"95%"}}
                 data={getData()}
                 sortColumn={sortColumn}
                 sortType={sortType}
                 onSortColumn={handleSortColumn}
                 loading={loading}>
-                <Column  width={70} align="center" fixed sortable>
+                <Column  flexGrow={1} align="center" fixed sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>No</HeaderCell>
                     <Cell dataKey="id" />
                 </Column>
-                <Column width={150} fixed sortable>
+                <Column flexGrow={1} fixed sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Email</HeaderCell>
                     <Cell dataKey="User.email" />
                 </Column>
-                <Column width={130} sortable>
+                <Column flexGrow={1} sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Car</HeaderCell>
                     <Cell dataKey="car" />
                 </Column>
-                <Column width={200} sortable>
+                <Column flexGrow={1} sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Start Rent</HeaderCell>
                     <Cell dataKey="start_rent_at" />
                 </Column>
-                <Column width={200} sortable>
+                <Column flexGrow={1} sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Finish Rent</HeaderCell>
                     <Cell dataKey="finish_rent_at" />
                 </Column>
-                <Column width={100} sortable>
+                <Column flexGrow={1} sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Price</HeaderCell>
                     <Cell dataKey="total_price" />
                 </Column>
-                <Column width={150} sortable>
+                <Column flexGrow={1} sortable>
                     <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Category</HeaderCell>
                     <Cell dataKey="category" />
                 </Column>
             </Table>
-            <div style={{ padding: 20 }}>
+            <div style={{ padding: 20, width:"95%" }}>
                 <Pagination
                 prev
                 next

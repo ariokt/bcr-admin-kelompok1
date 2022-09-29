@@ -13,14 +13,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/Cars/Add-New-Car" element={<AddNewCar />} />
-        <Route path="/Cars/Edit-Car-:id" element={<EditCar />} />
         <Route path="/" element={<Login  />} />
         <Route path="/dashboard" element={<ProtectedRoute >
           <Dashboard />
         </ProtectedRoute>} />
         <Route path="/cars" element={<ProtectedRoute >
           <Cars />
+        </ProtectedRoute>} />
+        <Route path="/cars/add-new-car" element={<ProtectedRoute >
+          <AddNewCar />
+        </ProtectedRoute>} />
+        <Route path="/cars/edit-car-:id" element={<ProtectedRoute >
+          <EditCar />
         </ProtectedRoute>} />
       </Routes>
     </BrowserRouter>
