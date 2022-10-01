@@ -54,7 +54,7 @@ const Cars = () => {
             setNotifAdd(true);
             setTimeout(() => {
                 setNotifAdd(false);
-                navigate(".", { replace: true }); //edit state jadi null kembali setelah popup
+                navigate(".", { replace: true }); //ubah state jadi null kembali setelah popup
             }, 3000)
         }
     }, [location])
