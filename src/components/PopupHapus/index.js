@@ -18,7 +18,7 @@ const PopupHapus = ({ idHapus }) => {
             setIdHapus("Data Berhasil Dihapus");
             window.scrollTo(0,0);
         } catch (error) {
-            console.log(error);
+            window.alert("Error "+error);
         }
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import user from "../../assets/user.svg";
-import { Nav, NavDropdown } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import "./User.css"
 
 const User = () => {

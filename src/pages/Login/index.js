@@ -31,7 +31,7 @@ const Login = () => {
                 localStorage.setItem('token', res.data.access_token);
                 navigate('/dashboard');
             })
-            .catch(err => (
+            .catch(() => (
                 setShow(true)));
     };
 

@@ -21,7 +21,7 @@ const TableDashboard = ({carData}) => {
     const [sortType, setSortType] = React.useState('asc'); 
     const [loading, setLoading] = React.useState(false);
 
-    const getData = () => {
+    const getData = () => { //sort asc or dsc
         if (sortColumn && sortType) {
             return data.sort((a, b) => {
                 let x = a[sortColumn];
@@ -54,16 +54,18 @@ const TableDashboard = ({carData}) => {
     const [limit, setLimit] = React.useState(10);
     const [page, setPage] = React.useState(1);
 
-    const handleChangeLimit = dataKey => {
-        setPage(1);
+    const handleChangeLimit = dataKey => { //untuk option 10,30,50 per page
+        setPage(1); //untuk pindah ke suatu page ke-n
         setLimit(dataKey);
     };
 
-    const data = fixedData.filter((v, i) => {
+    const data = fixedData.filter((v, i) => { //untuk implemen option per page yang dipilih
         const start = limit * (page - 1);
         const end = start + limit;
         return i >= start && i < end;
     });
+    
+
     if(carData.length !== 0) {
         return (
             <div style={{marginBottom: '100px'}}>

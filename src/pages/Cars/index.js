@@ -17,8 +17,8 @@ const Cars = () => {
     const value = {name: "CARS", menus: ["List Car"]};
     const breadCrumb = [{name: "Cars", link: ""}, {name: "List Car"}];
     const carsOption = ["All", "2 - 4 people", "4 - 6 people", "6 - 8 people"];
-    const [clickedValue, setClickedValue] = useState("");
-    const [idHapus, setIdHapus] = useState(null);
+    const [clickedValue, setClickedValue] = useState(""); //nampung value dari option yang dipilih
+    const [idHapus, setIdHapus] = useState(null); 
     const [notifHapus, setNotifHapus] = useState(false);
     const [notifAdd, setNotifAdd] = useState(false);
     const navigate = useNavigate();
@@ -51,10 +51,10 @@ const Cars = () => {
 
     useEffect(() => {
         if (location.state === "Data Berhasil Disimpan") {
-            setNotifAdd(true);
+            setNotifAdd(true); //buat notif
             setTimeout(() => {
                 setNotifAdd(false);
-                navigate(".", { replace: true }); //ubah state jadi null kembali setelah popup
+                navigate(".", { replace: true }); //ubah state jadi null kembali setelah popup 
             }, 3000)
         }
     }, [location])

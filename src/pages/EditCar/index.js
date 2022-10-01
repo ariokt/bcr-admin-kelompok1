@@ -39,9 +39,9 @@ const EditCar = () => {
                 // setImage(res.data.image)
                 
             } catch (error) {
-                console.log(error);
+                window.alert("Error "+error);
             }
-        };
+        }
         getCar(id);
     }, [id])
 

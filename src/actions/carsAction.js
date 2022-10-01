@@ -140,7 +140,6 @@ export const editCar = (id, nama, kategori, harga, status, image, navigate) => {
                 .then(() => navigate("/Cars", {state: "Data Berhasil Disimpan"}))
                 .catch((error) => {
                     //gagal edit data
-                    console.log(error)
                     dispatch({
                         type: EDIT_CAR,
                         payload:{
