@@ -26,7 +26,7 @@ const Login = () => {
             email: email,
             password:  password,
         };
-        axios.post('https://bootcamp-rent-car.herokuapp.com/admin/auth/login', payload)
+        axios.post('https://bootcamp-rent-cars.herokuapp.com/admin/auth/login', payload)
             .then(res => {
                 localStorage.setItem('token', res.data.access_token);
                 navigate('/dashboard');

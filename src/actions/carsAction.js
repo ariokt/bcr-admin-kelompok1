@@ -18,7 +18,7 @@ export const getCars = () => {
         //get cars API
         axios({
             method: "GET",
-            url: "https://bootcamp-rent-car.herokuapp.com/admin/car",
+            url: "https://bootcamp-rent-cars.herokuapp.com/admin/car",
             timeout: 120000,
         })
             .then((response) => {
@@ -60,7 +60,7 @@ export const addCar = (nama, kategori, harga, status, image, navigate) => {
         //add car API
         axios({
             method: "POST",
-            url: "https://bootcamp-rent-car.herokuapp.com/admin/car",
+            url: "https://bootcamp-rent-cars.herokuapp.com/admin/car",
             timeout: 120000,
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -113,7 +113,7 @@ export const editCar = (id, nama, kategori, harga, status, image, navigate) => {
         //edit car API
         axios({
             method: "PUT",
-            url: `https://bootcamp-rent-car.herokuapp.com/admin/car/${id}`,
+            url: `https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,
             timeout: 120000,
             headers: {
                 'Content-Type': 'multipart/form-data'
