@@ -1,31 +1,69 @@
 import React from 'react';
 import { Table, Pagination } from 'rsuite';
 import { useState, useEffect } from 'react';
-import './TableDashboard.css'
+import './TableDashboard.css';
+import axios from 'axios';
 
 const { Column, HeaderCell, Cell } = Table;
 
-const TableDashboard = ({carData}) => {
+const TableDashboard = () => {
+    const [dataTable, setDataTable] = useState([]);
     const [fixedData, setFixedData] = useState([]);
+    const [limit, setLimit] = React.useState(10);
+    const [page, setPage] = React.useState(1);
+    const [sortColumn, setSortColumn] = React.useState();
+    const [sortType, setSortType] = React.useState('asc'); 
+    const [loading, setLoading] = React.useState(false);
+    const [totalData, setTotalData] = useState(0);
+
+    const getDataTable = (page, limit) => {
+        axios({
+            method: "GET",
+            url: "https://bootcamp-rent-cars.herokuapp.com/admin/v2/order",
+            timeout: 120000,
+            params: {
+                sort: "user_email:asc",
+                page: page,
+                pageSize: limit,
+            },
+            headers: {
+                accept: 'application/json',
+                access_token: window.localStorage.getItem('token')
+            }
+        })
+        .then(res => {
+            setDataTable(res.data.orders);
+            setTotalData(res.data.count);
+        })
+    };
+
+    useEffect(() => {
+        getDataTable(page, limit);
+    }, [page, limit]);
 
     useEffect(() => {
         let ubahData = [];
-        for (let i = 0; i < carData.length; i++) {
-            carData[i].id = i+1;
-            ubahData.push(carData[i]);
+        for (let i = 0; i < dataTable.length; i++) {
+            if(page > 1 ) {
+                dataTable[i].no = i+1+(limit*(page-1));
+            } else {
+                dataTable[i].no = i+1;
+            }
+            ubahData.push(dataTable[i]);
         }
         setFixedData(ubahData);
-    }, [carData]);
+    }, [dataTable]);
 
-    const [sortColumn, setSortColumn] = React.useState(); //shorting data
-    const [sortType, setSortType] = React.useState('asc'); 
-    const [loading, setLoading] = React.useState(false);
+    const handleChangeLimit = dataKey => { //untuk option 10,30,50 per page
+        setPage(1); 
+        setLimit(dataKey);
+    };
 
     const getData = () => { //sort asc or dsc
         if (sortColumn && sortType) {
-            return data.sort((a, b) => {
-                let x = a[sortColumn];
-                let y = b[sortColumn];
+            return fixedData.sort((a, b) => {
+                let x = b[sortColumn];
+                let y = a[sortColumn];
                 if (typeof x === 'string') {
                     x = x.charCodeAt();
                 }
@@ -39,7 +77,7 @@ const TableDashboard = ({carData}) => {
                 }
             });
         }
-        return data;
+        return fixedData;
     };
 
     const handleSortColumn = (sortColumn, sortType) => {
@@ -50,23 +88,8 @@ const TableDashboard = ({carData}) => {
             setSortType(sortType);
         }, 500);
     };
-
-    const [limit, setLimit] = React.useState(10);
-    const [page, setPage] = React.useState(1);
-
-    const handleChangeLimit = dataKey => { //untuk option 10,30,50 per page
-        setPage(1); //untuk pindah ke suatu page ke-n
-        setLimit(dataKey);
-    };
-
-    const data = fixedData.filter((v, i) => { //untuk implemen option per page yang dipilih
-        const start = limit * (page - 1);
-        const end = start + limit;
-        return i >= start && i < end;
-    });
     
-
-    if(carData.length !== 0) {
+    if(fixedData.length !== 0) {
         return (
             <div style={{marginBottom: '100px'}}>
                 <Table height={420}
@@ -78,7 +101,7 @@ const TableDashboard = ({carData}) => {
                     loading={loading}>
                     <Column  flexGrow={1} align="center" fixed sortable>
                         <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>No</HeaderCell>
-                        <Cell dataKey="id" />
+                        <Cell dataKey="no" />
                     </Column>
                     <Column flexGrow={1} fixed sortable>
                         <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Email</HeaderCell>
@@ -86,7 +109,7 @@ const TableDashboard = ({carData}) => {
                     </Column>
                     <Column flexGrow={1} sortable>
                         <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Car</HeaderCell>
-                        <Cell dataKey="car" />
+                        <Cell dataKey="Car.name" />
                     </Column>
                     <Column flexGrow={1} sortable>
                         <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Start Rent</HeaderCell>
@@ -102,7 +125,7 @@ const TableDashboard = ({carData}) => {
                     </Column>
                     <Column flexGrow={1} sortable>
                         <HeaderCell style={{background: '#CFD4ED'}} className='headerCell'>Category</HeaderCell>
-                        <Cell dataKey="category" />
+                        <Cell dataKey="Car.category" />
                     </Column>
                 </Table>
                 <div style={{ padding: 20, width:"95%" }}>
@@ -116,7 +139,7 @@ const TableDashboard = ({carData}) => {
                     maxButtons={5}
                     size="xs"
                     layout={['total', '-', 'limit', '|', 'pager', 'skip']}
-                    total={fixedData.length}
+                    total={totalData}
                     limitOptions={[10, 30, 50]}
                     limit={limit}
                     activePage={page}
