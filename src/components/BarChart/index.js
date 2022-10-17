@@ -20,10 +20,10 @@ const BarCharts = (props) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" label={{ value: 'Date', position: 'insideBottom', offset: "-20"}}/>
+        <XAxis dataKey="date" label={{ value: 'Date', position: 'insideBottom', offset: "-20"}}/>
         <YAxis yAxisId="left" orientation="left" stroke="#8884d8" label={{ value: 'Amount of Car Rented', angle: -90, position: 'insideLeft'}}/>
         <Tooltip />
-        <Bar yAxisId="left" dataKey="summary" fill="#8884d8" />
+        <Bar yAxisId="left" dataKey="orderCount" fill="#8884d8" />
       </BarChart>
     </div>
   )

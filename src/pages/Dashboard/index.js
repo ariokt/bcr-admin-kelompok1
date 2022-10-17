@@ -20,7 +20,7 @@ const Dashboard = () => {
             .then((respones) => {
                 setCarData(respones.data)
             })
-    }
+        }
 
     useEffect(() => {
         getData();
@@ -33,7 +33,7 @@ const Dashboard = () => {
             <SideBar inside={value} />
             <div className="dashboard">
                 <Breadcrumb items={breadCrumb} />
-                <DataVisual carData={carData}/>
+                <DataVisual/>
                 <div className="dashboard__table">
                     <h2>Dashboard</h2>
                     <p> <img src={dashboard1} alt="" /> List Order</p>
