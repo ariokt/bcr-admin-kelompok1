@@ -13,7 +13,10 @@ const PopupHapus = ({ idHapus }) => {
         try {
             await axios({
                 method:"delete",
-                url:`https://bootcamp-rent-car.herokuapp.com/admin/car/${id}`
+                url:`https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,
+                headers: {
+                    'access_token': window.localStorage.getItem("token")
+                }
             });
             setIdHapus("Data Berhasil Dihapus");
             window.scrollTo(0,0);

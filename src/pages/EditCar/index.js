@@ -30,7 +30,10 @@ const EditCar = () => {
             try {
                 const res = await axios({
                     method: "get",
-                    url: `https://bootcamp-rent-car.herokuapp.com/admin/car/${id}`
+                    url: `https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,
+                    headers: {
+                        'access_token': window.localStorage.getItem("token")
+                    }
                 });
                 setNamaMobil(res.data.name);
                 setHarga(res.data.price);

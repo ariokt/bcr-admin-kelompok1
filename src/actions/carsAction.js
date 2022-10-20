@@ -20,6 +20,9 @@ export const getCars = () => {
             method: "GET",
             url: "https://bootcamp-rent-cars.herokuapp.com/admin/car",
             timeout: 120000,
+            headers: {
+                'access_token': localStorage.getItem("token")
+            }
         })
             .then((response) => {
                 //api berhasil
@@ -63,7 +66,8 @@ export const addCar = (nama, kategori, harga, status, image, navigate) => {
             url: "https://bootcamp-rent-cars.herokuapp.com/admin/car",
             timeout: 120000,
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                'access_token': localStorage.getItem("token")
             },
             data: {
                 name: nama,
@@ -116,7 +120,8 @@ export const editCar = (id, nama, kategori, harga, status, image, navigate) => {
             url: `https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,
             timeout: 120000,
             headers: {
-                'Content-Type': 'multipart/form-data'
+                'Content-Type': 'multipart/form-data',
+                'access_token': localStorage.getItem("token")
             },
             data: {
                 name: nama,

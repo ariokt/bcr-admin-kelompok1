@@ -24,21 +24,21 @@ const CarsContainer = ({ option, idHapus }) => {
             {(getListCarResult && (option === "All" || option === "")) && getListCarResult.map((item, y) => (
                 <CarCard key={y} data={item} />
             ))}
-            {(getListCarResult && option === "2 - 4 orang") && getListCarResult.map((item, y) => {
+            {(getListCarResult && option === "small") && getListCarResult.map((item, y) => {
                 if (item.category === option) {
                     return (<CarCard key={y} data={item} />)
                 } else {
                     return null;
                 }
             })}
-            {(getListCarResult && option === "4 - 6 orang") && getListCarResult.map((item, y) => {
+            {(getListCarResult && option === "medium") && getListCarResult.map((item, y) => {
                 if (item.category === option) {
                     return (<CarCard key={y} data={item} />)
                 } else {
                     return null;
                 }
             })}
-            {(getListCarResult && option === "6 - 8 orang") && getListCarResult.map((item, y) => {
+            {(getListCarResult && option === "large") && getListCarResult.map((item, y) => {
                 if (item.category === option) {
                     return (<CarCard key={y} data={item} />)
                 } else {

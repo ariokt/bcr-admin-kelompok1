@@ -32,11 +32,11 @@ const Cars = () => {
         if (bValue === "All") {
             setClickedValue("All");
         } else if (bValue === "2 - 4 people") {
-            setClickedValue("2 - 4 orang");
+            setClickedValue("small");
         } else if (bValue === "4 - 6 people") {
-            setClickedValue("4 - 6 orang");
+            setClickedValue("medium");
         } else if (bValue === "6 - 8 people") {
-            setClickedValue("6 - 8 orang");
+            setClickedValue("large");
         }
     }
 
