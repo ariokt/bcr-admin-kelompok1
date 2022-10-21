@@ -6,6 +6,7 @@ import iconUser from "../../assets/fi_users.svg"
 import iconTime from "../../assets/fi_clock.svg"
 import { useNavigate } from "react-router-dom";
 import { DeleteCarContext } from "../../pages/Cars";
+import DefaultMobil from "../../assets/odong.jpeg"
 import "./CarCard.css"
 
 
@@ -53,7 +54,7 @@ const CarCard = ({ data }) => {
     return (
         <div className="car-card bg-white">
             <div className="car-card__detail">
-                <img src={data.image} alt="gambar mobil"/>
+                {data.image ? <img src={data.image} alt="gambar mobil"/> : <img src={DefaultMobil} alt="gambar mobil"/>}
                 <div className="d-flex flex-column gap-3 mb-3 p-3">
                     <p>{data.name}</p>
                     <p className="car-card__harga">Rp {Intl.NumberFormat('ID').format(data.price)} / hari</p>
