@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from 'axios';
+import React from "react";
 import Breadcrumb from "../../components/Breadcrumb";
 import dashboard1 from '../../assets/dashboard1.svg'
 import DataVisual from "../../components/DataVisual"
@@ -12,19 +11,6 @@ import "./Dashboard.css"
 const Dashboard = () => {
     const value = {name: "DASHBOARD", menus: ["Dashboard"]};
     const breadCrumb = [{name: "Dasboard", link: ""}, {name: "Dasboard"}];
-    const [carData, setCarData] = useState([]);
-
-    const getData = () => {
-        axios
-            .get("https://bootcamp-rent-car.herokuapp.com/admin/order")
-            .then((respones) => {
-                setCarData(respones.data)
-            })
-        }
-
-    useEffect(() => {
-        getData();
-    }, [])
 
     return (
         <div>
@@ -37,7 +23,7 @@ const Dashboard = () => {
                 <div className="dashboard__table">
                     <h2>Dashboard</h2>
                     <p> <img src={dashboard1} alt="" /> List Order</p>
-                    <TableDashboard carData={carData}/>
+                    <TableDashboard />
                 </div>
             </div>
         </div>
